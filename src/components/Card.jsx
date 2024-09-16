@@ -1,7 +1,7 @@
 import React from "react";
 import { FaArrowRight } from "react-icons/fa6";
 
-function Card({ width, start, para, hover="none" }) {
+function Card({ width, start, para, hover }) {
 	return (
 		<div className={`${width} hover:${hover} min-h-[25rem] flex flex-col justify-between p-5 bg-zinc-800 rounded-xl `}>
 			<div className="w-full">
