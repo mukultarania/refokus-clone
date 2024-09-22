@@ -14,7 +14,7 @@ const Footer = () => {
 						<h4 className="mb-10">Socials</h4>
 						{["instagram", "twitter", "linkedin"].map(
 							(item, ind) => (
-								<a className="block mt-2 text-zinc-700 capitalize">
+								<a key={ind} className="block mt-2 text-zinc-700 capitalize">
 									{item}
 								</a>
 							)
@@ -24,7 +24,7 @@ const Footer = () => {
 						<h4 className="mb-10">Sitemap</h4>
 						{["Home", "Work", "Careers", "Contact"].map(
 							(item, ind) => (
-								<a className="block mt-2 capitalize">{item}</a>
+								<a key={ind} className="block mt-2 capitalize">{item}</a>
 							)
 						)}
 					</div>

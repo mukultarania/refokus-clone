@@ -12,16 +12,16 @@ const Navbar = () => {
 				/>
 				<h1 className="ml-2 text-sm">Refokus</h1>
 				<div className="link flex justify-center items-center gap-16 ml-10">
-					{["Home", "Work", "Culture", "", "News"].map((elem) =>
+					{["Home", "Work", "Culture", "", "News"].map((elem, ind) =>
 						elem !== "" ? (
-							<a className="text-sm font-regular" href="">
+							<a key={ind} className="text-sm font-regular" href="">
 								{elem === "Work" && (
 									<span className="inline-block w-2 h-2 bg-green-600 rounded-full mr-1" />
 								)}
 								{elem}
 							</a>
 						) : (
-							<span className="w-[2px] h-7 bg-zinc-600" />
+							<span key={ind} className="w-[2px] h-7 bg-zinc-600" />
 						)
 					)}
 				</div>

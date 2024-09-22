@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import Product from "./Product";
+import { motion } from "framer-motion";
 
 function Products() {
-    const pData = [
+	const pData = [
 		{
 			title: "Cula",
 			description:
@@ -32,8 +33,14 @@ function Products() {
 			case: false,
 		},
 	];
+
+	const [pos, setPos] = useState(0);
+	const mover = (val) => {
+		setPos(val * 20);
+	};
+
 	return (
-		<div>
+		<div className="mt-24 relative">
 			{pData.map((elem, i) => (
 				<Product
 					key={i}
@@ -41,8 +48,39 @@ function Products() {
 					description={elem.description}
 					live={elem.live}
 					case={elem.case}
+					mover={mover}
+					count={i}
 				/>
 			))}
+			<div className="w-full h-full absolute top-0 pointer-events-none">
+				<motion.div
+					initial={{ x: "-50%", y: pos }}
+					animate={{ y: pos + "rem" }}
+					className="window overflow-hidden w-[25rem] h-[20rem] absolute left-[40%] -translate-x-[40%] bg-white"
+				>
+					<motion.div
+						className="w-full h-full"
+						animate={{ y: -pos + "rem" }}
+						transition={{ ease: [0.76, 0, 0.24, 1], duration: 0.5 }}
+					>
+					</motion.div>
+					<motion.div
+						className="w-full h-full bg-sky-400"
+						animate={{ y: -pos + "rem" }}
+						transition={{ ease: [0.76, 0, 0.24, 1], duration: 0.5 }}
+					></motion.div>
+					<motion.div
+						className="w-full h-full bg-sky-600"
+						animate={{ y: -pos + "rem" }}
+						transition={{ ease: [0.76, 0, 0.24, 1], duration: 0.5 }}
+					></motion.div>
+					<motion.div
+						className="w-full h-full bg-sky-800"
+						animate={{ y: -pos + "rem" }}
+						transition={{ ease: [0.76, 0, 0.24, 1], duration: 0.5 }}
+					></motion.div>
+				</motion.div>
+			</div>
 		</div>
 	);
 }

@@ -1,7 +1,8 @@
-import React from "react";
+import { useMotionValue, useMotionValueEvent, useScroll } from "framer-motion";
+import React, { useState } from "react";
 
 const Work = () => {
-	const images = [
+	const imagesData = [
 		{
 			url: "https://images.unsplash.com/photo-1651499833146-0cd21fe5ca9b?q=80&w=1896&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 			top: "50%",
@@ -39,6 +40,45 @@ const Work = () => {
 			isActive: false,
 		},
 	];
+	const [images, setImages] = useState(imagesData);
+	const { scrollYProgress } = useScroll();
+
+	scrollYProgress.on("change", (y) => {
+		function imagesShow(arr) {
+			setImages((prev) =>
+				prev.map((image, i) =>
+					arr.indexOf(i) === -1
+						? { ...image, isActive: false }
+						: { ...image, isActive: true }
+				)
+			);
+		}
+
+		switch (Math.floor(y * 100)) {
+			case 0:
+				imagesShow([]);
+				break;
+			case 1:
+				imagesShow([0]);
+				break;
+			case 2:
+				imagesShow([0, 1]);
+				break;
+			case 3:
+				imagesShow([0, 1, 2]);
+				break;
+			case 4:
+				imagesShow([0, 1, 2, 3]);
+				break;
+			case 5:
+				imagesShow([0, 1, 2, 3, 4]);
+				break;
+			case 6:
+				imagesShow([0, 1, 2, 3, 4, 5]);
+				break;
+		}
+	});
+
 	return (
 		<div className="w-full">
 			<div className="max-w-5xl mx-auto text-center">
@@ -51,6 +91,7 @@ const Work = () => {
 					(image, i) =>
 						image.isActive && (
 							<img
+								key={i}
 								className="absolute w-40 h-40 rounded-lg -translate-x-[50%] -translate-y-[50%]"
 								src={image.url}
 								style={{ top: image.top, left: image.left }}

@@ -9,13 +9,13 @@ function Cards() {
 					width={"basis-2/5"}
 					start={false}
 					para={true}
-					hover={"bg-zinc-700"}
+                    // hover={"bg-zinc-700"}
 				/>
 				<Card
 					width={"basis-3/5"}
 					start={true}
 					para={false}
-					hover={"bg-violet-500"}
+					hover={true}
 				/>
 			</div>
 		</div>
