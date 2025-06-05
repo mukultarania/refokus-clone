@@ -29,22 +29,6 @@ A modern, responsive clone of the Refokus website, built using **HTML**, **Tailw
 
 ---
 
-## 📁 Folder Structure
-
-refokus-clone/
-├── src/
-│ ├── assets/ # Images and media
-│ ├── components/ # Reusable UI components
-│ └── main.js # JS entry point
-├── index.html # Main HTML file
-├── tailwind.config.js # Tailwind configuration
-├── vite.config.js # Vite configuration
-├── package.json # Project metadata & scripts
-└── README.md # Documentation
-
-
----
-
 ## 🚀 Getting Started
 
 Follow the steps below to run the project locally:
@@ -62,6 +46,7 @@ npm install
 # 4. Start the development server
 npm run dev
 
+```
 ---
 
 🙌 Acknowledgements
